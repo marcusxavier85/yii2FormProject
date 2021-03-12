@@ -16,7 +16,7 @@ class Products extends ActiveRecord
     public function rules() {
         return [
             [['name', 'price', 'image', 'quantity', 'categories'], 'required'],
-            [['name'], 'match', 'pattern' => '/^[A-Z][a-z]+$/'],
+            [['name'], 'match', 'pattern' => '/^[A-Za-z ]+$/'],
             [['image'], 'match', 'pattern' => '/^[a-z]+$/'],
             [['price'], 'double'],
             [['quantity'], 'integer'],

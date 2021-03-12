@@ -16,7 +16,7 @@ $this->title = 'Add Products';
 
 $model = new Products();
 $items = Categories::find()->select(['category'])->indexBy('id')->column();
-var_dump($items);
+
 $form = ActiveForm::begin([
 'id' => 'add-products-form',
 'options' => ['class' => 'input-form'],
