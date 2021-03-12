@@ -19,7 +19,7 @@ class Products extends ActiveRecord
             [['name'], 'match', 'pattern' => '/^[A-Z][a-z]+$/'],
             [['image'], 'match', 'pattern' => '/^[a-z]+$/'],
             [['price'], 'double'],
-            [['quantity'], 'integer']
+            [['quantity'], 'integer'],
         ];
     }
 
