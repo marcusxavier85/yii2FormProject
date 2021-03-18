@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Categories;
+use app\models\CategoriesList;
 use app\models\Products;
 use Yii;
 use yii\filters\AccessControl;
@@ -133,21 +134,25 @@ class SiteController extends Controller
     public function actionProducts()
     {
 
-        $model = new Products();
-
-        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+    $model = new Products();
+    $modelTwo = new CategoriesList();
+    if (($model->load(\Yii::$app->request->post()) && $model->save()) && ($modelTwo->load(\Yii::$app->request->post()) && $modelTwo->save())) {
+        {
+//            $modelTwo::insertArray();
             return $this->redirect(['products']);
         }
+    }
 
-        $categoriesModel = new Categories();
+    $categoriesModel = new Categories();
 
-        if ($categoriesModel->load(\Yii::$app->request->post()) && $categoriesModel->save()) {
-            return $this->redirect(['products']);
-        }
+    if ($categoriesModel->load(\Yii::$app->request->post()) && $categoriesModel->save()) {
+        return $this->redirect(['products']);
+    }
 
-        return $this->render('products', ['model' => $model]);
+    return $this->render('products', ['model' => $model]);
 
     }
+
 }
 
 

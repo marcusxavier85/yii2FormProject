@@ -16,51 +16,88 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`techtest` /*!40100 DEFAULT CHARACTER SE
 
 USE `techtest`;
 
+/*Table structure for table `___` */
+
+DROP TABLE IF EXISTS `___`;
+
+CREATE TABLE `___` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `productName` char(255) NOT NULL DEFAULT 'no-name',
+  `categories` char(255) NOT NULL DEFAULT 'no-cat',
+  KEY `ID` (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*Data for the table `___` */
+
 /*Table structure for table `categories` */
 
 DROP TABLE IF EXISTS `categories`;
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` blob NOT NULL,
-  `productsAssigned` blob,
+  `category` char(255) NOT NULL,
+  PRIMARY KEY (`category`),
   KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 /*Data for the table `categories` */
 
-insert  into `categories`(`id`,`category`,`productsAssigned`) values 
-(1,'Bedroom\r\n',NULL),
-(2,'Car',NULL),
-(3,'Kitchen',NULL),
-(4,'Football',NULL),
-(5,'Animal',NULL),
-(6,'Insect',NULL),
-(7,'Bird',NULL);
+insert  into `categories`(`id`,`category`) values 
+(1,'Bedroom'),
+(2,'Car'),
+(3,'Lounge'),
+(12,'Shooting'),
+(13,'Sport'),
+(14,'Class');
 
 /*Table structure for table `products` */
 
 DROP TABLE IF EXISTS `products`;
 
 CREATE TABLE `products` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `name` char(255) NOT NULL DEFAULT 'no-name',
-  `price` decimal(11,0) NOT NULL DEFAULT '0',
-  `image` char(255) NOT NULL DEFAULT 'no-image',
+  `price` int(11) NOT NULL DEFAULT '0',
+  `image` varbinary(5000) NOT NULL,
   `quantity` int(11) NOT NULL DEFAULT '0',
-  `categories` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`ID`),
+  KEY `ID` (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 /*Data for the table `products` */
 
-insert  into `products`(`name`,`price`,`image`,`quantity`,`categories`) values 
-('bed',5,'7yrf',10,1),
-('toyota\r\n',1000,'sadfeawf',4,2),
-('Ggras',33,'uijehbrg',435,1),
-('Panda',100,'rthwrthwrh',12,1),
-('Boots',24,'uiopradjbgpouear',13,1),
-('Giosgf',1,'sadfasdf',12,1),
-('Jk',1,'uihb',78,1),
-('Tiger',1231313,'dfsgfds',33,1);
+insert  into `products`(`ID`,`name`,`price`,`image`,`quantity`) values 
+(20,'Kjnui',78,'jkn',7),
+(19,'Kjnui',78,'jkn',7),
+(18,'Kjnui',78,'jkn',7),
+(17,'Jvuyv',87,'yuoh',4),
+(16,'Knyui',78,'jkn',7),
+(15,'Jumo',334,'dfg',41),
+(14,'Jumo',334,'dfg',41),
+(13,'Hello',341,'easdg',44),
+(12,'Hello',341,'easdg',44),
+(10,'Mbui',786,'kltyugft',6),
+(11,'Kuibn',89,'hjkb',88),
+(21,'Kjnui',78,'jkn',7),
+(22,'Dgerge',342,'gdfgsg',23),
+(23,'Gdgfa',4,'sfhfgh',76),
+(24,'Kyub',7,'uioh',8),
+(25,'HelloHeloo',1234,'dfg',124);
+
+/*Table structure for table `products_categories` */
+
+DROP TABLE IF EXISTS `products_categories`;
+
+CREATE TABLE `products_categories` (
+  `product_ID` int(11) NOT NULL DEFAULT '0',
+  `categories` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`product_ID`,`categories`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*Data for the table `products_categories` */
+
+insert  into `products_categories`(`product_ID`,`categories`) values 
+(0,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -7,7 +7,6 @@ use yii\db\ActiveRecord;
 
 class Products extends ActiveRecord
 {
-
     public static function tableName()
     {
         return 'products';
@@ -15,9 +14,9 @@ class Products extends ActiveRecord
 
     public function rules() {
         return [
-            [['name', 'price', 'image', 'quantity', 'categories'], 'required'],
+            [['name', 'price', 'image', 'quantity'], 'required'],
             [['name'], 'match', 'pattern' => '/^[A-Za-z ]+$/'],
-            [['image'], 'match', 'pattern' => '/^[a-z]+$/'],
+            [['image'], 'file', 'extensions' => 'png, jpg, webp'],
             [['price'], 'double'],
             [['quantity'], 'integer'],
         ];

@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use app\models\Products;
 use app\models\Categories;
+use app\models\CategoriesList;
 
 $this->title = 'Add Products';
 
@@ -15,6 +16,7 @@ $this->title = 'Add Products';
 <?php
 
 $model = new Products();
+$modelTwo = new CategoriesList();
 $items = Categories::find()->select(['category'])->indexBy('id')->column();
 
 $form = ActiveForm::begin([
@@ -23,9 +25,9 @@ $form = ActiveForm::begin([
 ]) ?>
 <?= $form->field($model, 'name') ?>
 <?= $form->field($model, 'price') ?>
-<?= $form->field($model, 'image') ?>
+<?= $form->field($model, 'image')->fileInput() ?>
 <?= $form->field($model, 'quantity') ?>
-<?= $form->field($model, 'categories')->checkboxList($items) ?>
+<?= $form->field($modelTwo, 'categories[]')->inline(true)->checkboxList($items) ?>
 
 <div class="form-group">
     <div class="col-lg-offset-1 col-lg-11">
